@@ -16,10 +16,8 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
-val fontName = GoogleFont("Plus Jakarta Sans")
-
 val fontFamily = FontFamily(
-    Font(googleFont = fontName, fontProvider = provider)
+    Font(googleFont = GoogleFont("Plus Jakarta Sans"), fontProvider = provider)
 )
 val poppins = FontFamily(
     Font(googleFont = GoogleFont("Poppins"), fontProvider = provider)
@@ -48,6 +46,11 @@ val Typography = Typography(
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
+    titleMedium = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp,
+    ),
     labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
@@ -60,5 +63,6 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         letterSpacing = 0.5.sp
-    ),)
+    )
+)
 

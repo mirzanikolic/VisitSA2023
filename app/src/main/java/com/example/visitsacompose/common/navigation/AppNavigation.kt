@@ -31,7 +31,7 @@ internal fun AppNavigation(
 ) {
     AnimatedNavHost(
         navController = navController,
-        startDestination = Screen.Onboarding.route,
+        startDestination = Screen.Home.route,
         enterTransition = { defaultEnterTransition(initialState, targetState) },
         exitTransition = { defaultExitTransition(initialState, targetState) },
         popEnterTransition = { defaultPopEnterTransition() },
