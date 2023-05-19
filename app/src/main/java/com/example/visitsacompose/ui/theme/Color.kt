@@ -11,3 +11,6 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val Detail = Color(0xFFEF5455)
+val Secondary = Color(0xFFF6F8FE)
+val CustomGray = Color(0xFF9CA4AB)
+val Transparent = Color(0x00FFFFFF)

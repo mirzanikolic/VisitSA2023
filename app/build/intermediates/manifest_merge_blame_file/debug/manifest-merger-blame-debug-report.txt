@@ -6,9 +6,9 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="28"
-8-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml
+8-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="33" />
-9-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml
+9-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml
 10
 11    <permission
 11-->[androidx.core:core:1.9.0] /Users/mirzanikolic/.gradle/caches/transforms-3/3593c4c8aa221b07ce9399d7daf67cb9/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
@@ -22,49 +22,49 @@
 15-->[androidx.core:core:1.9.0] /Users/mirzanikolic/.gradle/caches/transforms-3/3593c4c8aa221b07ce9399d7daf67cb9/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:5:5-27:19
+17-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:5:5-27:19
 18        android:name="com.example.visitsacompose.MainApplication"
-18-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:6:9-40
+18-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:6:9-40
 19        android:allowBackup="true"
-19-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:7:9-35
+19-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:7:9-35
 20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 20-->[androidx.core:core:1.9.0] /Users/mirzanikolic/.gradle/caches/transforms-3/3593c4c8aa221b07ce9399d7daf67cb9/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 21        android:dataExtractionRules="@xml/data_extraction_rules"
-21-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:8:9-65
+21-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:8:9-65
 22        android:debuggable="true"
 23        android:extractNativeLibs="false"
 24        android:fullBackupContent="@xml/backup_rules"
-24-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:9:9-54
+24-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:9:9-54
 25        android:icon="@mipmap/ic_launcher"
-25-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:10:9-43
+25-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:10:9-43
 26        android:label="@string/app_name"
-26-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:11:9-41
+26-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:11:9-41
 27        android:roundIcon="@mipmap/ic_launcher_round"
-27-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:12:9-54
+27-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:12:9-54
 28        android:supportsRtl="true"
-28-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:13:9-35
+28-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:13:9-35
 29        android:testOnly="true"
 30        android:theme="@style/Theme.VisitSACompose" >
-30-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:14:9-52
+30-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:14:9-52
 31        <activity
-31-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:16:9-26:20
+31-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:16:9-26:20
 32            android:name="com.example.visitsacompose.MainActivity"
-32-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:17:13-41
+32-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:17:13-41
 33            android:exported="true"
-33-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:18:13-36
+33-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:18:13-36
 34            android:label="@string/app_name"
-34-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:19:13-45
+34-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:19:13-45
 35            android:theme="@style/Theme.VisitSACompose" >
-35-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:20:13-56
+35-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:20:13-56
 36            <intent-filter>
-36-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:21:13-25:29
+36-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:21:13-25:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:22:17-69
-37-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:22:25-66
+37-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:22:17-69
+37-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:22:25-66
 38
 39                <category android:name="android.intent.category.LAUNCHER" />
-39-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:24:17-77
-39-->/Users/mirzanikolic/AndroidStudioProjects/VisitSACompose/app/src/main/AndroidManifest.xml:24:27-74
+39-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:24:17-77
+39-->/Users/mirzanikolic/AndroidStudioProjects/VisitSA-SE/app/src/main/AndroidManifest.xml:24:27-74
 40            </intent-filter>
 41        </activity>
 42        <activity
