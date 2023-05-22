@@ -1,2 +1,8 @@
 /build
 google-services.json
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+.gradle/
