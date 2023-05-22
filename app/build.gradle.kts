@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -52,6 +53,9 @@ android {
 }
 
 dependencies {
+
+    val composeBom = platform("androidx.compose:compose-bom:2023.04.01")
+    implementation(composeBom)
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
