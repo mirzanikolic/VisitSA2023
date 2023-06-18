@@ -10,7 +10,18 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
+<<<<<<< HEAD
 val Detail = Color(0xFFEF5455)
 val Secondary = Color(0xFFF6F8FE)
 val CustomGray = Color(0xFF9CA4AB)
 val Transparent = Color(0x00FFFFFF)
+=======
+val Primary = Color(0xFF2B3252)
+val Detail = Color(0xFFEF5455)
+val Secondary = Color(0xFFF6F8FE)
+val Yellow = Color(0xFFFAD744)
+val CustomGray = Color(0xFF9CA4AB)
+val Transparent = Color(0x00FFFFFF)
+val LightGray = Color(0xFF66707A)
+val TransparentGray = Color(0x94343434)
+>>>>>>> e0c19b1 (Add base layouts with finished UI)

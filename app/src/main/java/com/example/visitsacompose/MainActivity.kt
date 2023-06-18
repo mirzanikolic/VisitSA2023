@@ -15,7 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.visitsacompose.common.navigation.AppNavigation
+import com.example.visitsacompose.common.navigation.Screen
+import com.example.visitsacompose.ui.component.BottomNavigationBar
 import com.example.visitsacompose.ui.theme.VisitSAComposeTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,13 +35,21 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun VisitSaApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberAnimatedNavController()
 ) {
-    Scaffold { innerPadding ->
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+
+    Scaffold(
+        bottomBar = {
+            if (currentRoute != Screen.Onboarding.route) {
+                BottomNavigationBar(navController)
+            }
+        }
+    ) { innerPadding ->
         AppNavigation(navController, modifier.padding(innerPadding))
     }
 }

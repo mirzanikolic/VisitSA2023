@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /build
 google-services.json
 captures/
@@ -6,3 +7,6 @@ captures/
 *.apk
 output.json
 .gradle/
+=======
+/build
+>>>>>>> e0c19b1 (Add base layouts with finished UI)

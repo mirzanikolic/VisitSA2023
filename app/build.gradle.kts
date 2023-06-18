@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt)
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -14,8 +13,8 @@ android {
         applicationId = "com.example.visitsacompose"
         minSdk = 28
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -70,6 +69,14 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.compose.paging)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.play.services.maps)
+    implementation(libs.android.maps.utils)
+    implementation(libs.osmdroid.android)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.material)
+
+    // Accompanist library for Compose
+    implementation(libs.accompanist.systemuicontroller)
 
     // DI
     implementation(libs.hilt)

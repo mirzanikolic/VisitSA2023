@@ -35,7 +35,18 @@ val Typography = Typography(
     bodyMedium = TextStyle(
         fontFamily = fontFamily,
         fontWeight = FontWeight.Normal,
+<<<<<<< HEAD
         fontSize = 16.sp,
+=======
+        fontSize = 14.sp,
+        letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 10.sp,
+        lineHeight = 18.sp,
+>>>>>>> e0c19b1 (Add base layouts with finished UI)
         letterSpacing = 0.5.sp
     ),
     titleLarge = TextStyle(

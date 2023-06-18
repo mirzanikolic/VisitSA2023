@@ -1,5 +1,6 @@
 package com.example.visitsacompose.common.navigation
 
+import MapScreen
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -18,9 +19,46 @@ import com.example.visitsacompose.common.feature.onboarding.Onboarding
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
-private sealed class Screen(open val route: String) {
+sealed class Screen(open val route: String) {
     object Onboarding : Screen("onboarding")
     object Home : Screen("home")
+    object ItemDetails : Screen("itemDetails/{id}") {
+        fun getRoute(id: Int) = "itemDetails/${id}"
+    }
+
+    object MapScreen : Screen("map")
+    object Tours : Screen("tours")
+    object Settings : Screen("settings")
+}
+
+sealed class BottomNavItem(
+    val route: String,
+    val title: String,
+    val icon: Int
+) {
+    object Home : BottomNavItem(
+        route = Screen.Home.route,
+        title = "Home",
+        icon = R.drawable.ic_home
+    )
+
+    object Map : BottomNavItem(
+        route = Screen.MapScreen.route,
+        title = "Map",
+        icon = R.drawable.ic_map
+    )
+
+    object Tours : BottomNavItem(
+        route = Screen.Tours.route,
+        title = "Tours",
+        icon = R.drawable.ic_tours
+    )
+
+    object Settings : BottomNavItem(
+        route = Screen.Settings.route,
+        title = "Settings",
+        icon = R.drawable.ic_settings
+    )
 }
 
 @ExperimentalAnimationApi
@@ -44,7 +82,30 @@ internal fun AppNavigation(
             })
         }
         composable(route = Screen.Home.route) {
-            Home()
+            Home(openDetails = { itemId ->
+                navController.navigate(Screen.ItemDetails.getRoute(itemId))
+            })
+        }
+        composable(
+            route = Screen.ItemDetails.route,
+            arguments = listOf(
+                navArgument("id") { type = NavType.IntType },
+            ),
+        ) {
+            ItemDetails(onClick = {
+                navController.navigateUp()
+            })
+        }
+        composable(route = Screen.MapScreen.route) {
+            MapScreen()
+        }
+        composable(route = Screen.Tours.route) {
+            Tours(openDetails = { itemId ->
+                navController.navigate(Screen.ItemDetails.getRoute(itemId))
+            })
+        }
+        composable(route = Screen.Settings.route) {
+            Settings()
         }
     }
 }

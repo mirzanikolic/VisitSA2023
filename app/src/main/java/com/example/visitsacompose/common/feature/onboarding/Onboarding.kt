@@ -25,6 +25,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -51,42 +53,60 @@ fun Onboarding(
 
     val coroutineScope = rememberCoroutineScope()
 
-    Box(modifier = Modifier.fillMaxSize().background(Color.Black)) {
-        HorizontalPager(
-            pageCount = onboardingItemList.size,
-            state = pagerState
-        ) { page ->
-            val newObject = onboardingItemList[page]
+    Column() {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+        ) {
+            HorizontalPager(
+                pageCount = onboardingItemList.size,
+                state = pagerState,
+                modifier = Modifier.padding(bottom = 45.dp)
+            ) { page ->
+                val newObject = onboardingItemList[page]
 
-            Image(
-                painterResource(id = newObject.image),
-                contentDescription = null,
-                modifier = modifier.fillMaxSize(),
-                contentScale = ContentScale.FillBounds
-            )
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Bottom,
-                modifier = modifier.fillMaxHeight()
-            ) {
-                Text(
-                    text = newObject.title,
-                    style = Typography.titleLarge,
-                    color = Color.White,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 12.dp),
-                    textAlign = TextAlign.Center
+                Image(
+                    painterResource(id = newObject.image),
+                    contentDescription = null,
+                    modifier = modifier.fillMaxSize(),
+                    contentScale = ContentScale.FillBounds
                 )
-                Text(
-                    text = newObject.body,
-                    style = Typography.headlineSmall,
-                    color = Color.White,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 88.dp),
-                    textAlign = TextAlign.Center
+
+                Column(
+                    horizontalAlignment = CenterHorizontally,
+                    verticalArrangement = Arrangement.Bottom,
+                    modifier = modifier.fillMaxHeight().padding(bottom = 80.dp)
+                ) {
+                    Text(
+                        text = newObject.title,
+                        style = Typography.titleLarge,
+                        color = Color.White,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp),
+                        textAlign = TextAlign.Center
+                    )
+                    Text(
+                        text = newObject.body,
+                        style = Typography.headlineSmall,
+                        color = Color.White,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 88.dp),
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+            ) {
+                // Pager indicator positioned above the button
+                PagerIndicator(
+                    pageCount = onboardingItemList.size,
+                    currentPage = pagerState.currentPage,
+                    modifier = Modifier.align(CenterHorizontally)
                 )
                 Button(
                     onClick = {
@@ -101,22 +121,13 @@ fun Onboarding(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(22.dp)
+                        .padding(horizontal = 22.dp, vertical = 48.dp)
                         .height(60.dp)
                 ) {
                     Text(text = "Next", fontSize = 16.sp)
                 }
             }
         }
-
-        // Pager indicator positioned above the button
-        PagerIndicator(
-            pageCount = onboardingItemList.size,
-            currentPage = pagerState.currentPage,
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(136.dp)
-        )
     }
 }
 
