@@ -68,7 +68,7 @@ fun OtherChoicesItemCard(
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 Image(
-                    painterResource(id = homeItemModel.image),
+                    painterResource(id = R.drawable.ic_hotel_central),
                     null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillHeight
@@ -81,7 +81,7 @@ fun OtherChoicesItemCard(
                     .padding(vertical = 6.dp)
             ) {
                 Text(
-                    text = homeItemModel.title,
+                    text = homeItemModel.name,
                     style = Typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -128,7 +128,7 @@ fun OtherChoicesItemCard(
                 color = Color.Black,
                 modifier = Modifier
                     .align(CenterVertically)
-                    .alpha(if (homeItemModel.type == SectionEnum.RESTAURANT || homeItemModel.type == SectionEnum.CLUB) 0f else 1f),
+                    .alpha(if (homeItemModel.type == "restaurant" || homeItemModel.type == "club") 0f else 1f),
             )
         }
     }

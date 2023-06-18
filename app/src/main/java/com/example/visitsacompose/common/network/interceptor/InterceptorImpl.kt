@@ -9,7 +9,7 @@ import javax.inject.Inject
 class InterceptorImpl @Inject constructor() : BaseInterceptor(), Interceptor {
 
     override fun loggingInterceptor(): okhttp3.Interceptor {
-        val loggingInterceptor = HttpLoggingInterceptor { message ->
+        val loggingInterceptor = HttpLoggingInterceptor {
 //            if (BuildConfig.DEBUG) {
 //                Log.d("API", message)
 //            }

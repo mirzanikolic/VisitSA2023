@@ -81,7 +81,7 @@ fun ItemDetails(
             Row {
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = itemModel.title,
+                    text = itemModel.name,
                     style = Typography.titleMedium,
                     modifier = Modifier.align(CenterVertically),
                     fontWeight = FontWeight.SemiBold
@@ -89,7 +89,7 @@ fun ItemDetails(
                 Spacer(modifier = Modifier.weight(1f))
             }
             Image(
-                painterResource(id = itemModel.image),
+                painterResource(id = R.drawable.ic_hotel_central),
                 contentDescription = "Image",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,7 +104,7 @@ fun ItemDetails(
             ) {
                 Column() {
                     Text(
-                        text = itemModel.title,
+                        text = itemModel.name,
                         fontSize = 24.sp,
                         style = Typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
@@ -133,7 +133,7 @@ fun ItemDetails(
                             modifier = Modifier.padding(start = 8.dp)
                         )
                         Text(
-                            text = itemModel.rating.toString(),
+                            text = itemModel.averageRating.toString(),
                             style = Typography.bodySmall,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -182,7 +182,7 @@ fun ItemDetails(
                     color = Color.Black,
                     modifier = Modifier
                         .align(CenterVertically)
-                        .alpha(if (itemModel.type == SectionEnum.RESTAURANT) 0f else 1f),
+                        .alpha(if (itemModel.type == "restaurant") 0f else 1f),
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 PrimaryButton(
@@ -193,7 +193,7 @@ fun ItemDetails(
                         )
                     },
                     text =
-                    if (itemModel.type == SectionEnum.TOUR) "Book Now" else "Contact property",
+                    if (itemModel.type == "tour") "Book Now" else "Contact property",
                     margin = 22.dp
                 )
             }

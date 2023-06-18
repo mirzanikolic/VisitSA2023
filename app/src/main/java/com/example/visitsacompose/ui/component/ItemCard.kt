@@ -61,13 +61,13 @@ fun ItemCard(
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 Image(
-                    painterResource(id = itemModel.image),
+                    painterResource(id = R.drawable.ic_hotel_central),
                     null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillHeight
                 )
                 Text(
-                    text = itemModel.type.name.lowercase().capitalize(),
+                    text = itemModel.type.lowercase().capitalize(),
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .padding(12.dp)
@@ -82,7 +82,7 @@ fun ItemCard(
                     .padding(top = 8.dp, bottom = 4.dp)
             ) {
                 Text(
-                    text = itemModel.title,
+                    text = itemModel.name,
                     style = Typography.bodyMedium,
                     fontWeight = FontWeight.SemiBold
                 )
@@ -112,7 +112,7 @@ fun ItemCard(
                             tint = Yellow
                         )
                         Text(
-                            text = itemModel.rating.toString(),
+                            text = itemModel.averageRating.toString(),
                             style = Typography.bodySmall,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.SemiBold,

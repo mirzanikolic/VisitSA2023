@@ -5,22 +5,20 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,8 +30,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.visitsacompose.R
-import com.example.visitsacompose.common.model.displayHomeItems
 import com.example.visitsacompose.common.model.displaySections
 import com.example.visitsacompose.common.model.enum.SectionEnum
 import com.example.visitsacompose.ui.component.FilterButton
@@ -46,10 +44,12 @@ import com.example.visitsacompose.ui.theme.Typography
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home(
-    openDetails: (Int) -> Unit
+    openDetails: (Int) -> Unit,
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     var selectedIndex by remember { mutableStateOf(0) }
+    val state by homeViewModel.state.collectAsState()
 
     Column(
         modifier = Modifier
@@ -75,11 +75,13 @@ fun Home(
         }
         Spacer(modifier = Modifier.padding(12.dp))
         TextField(
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Secondary,
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Secondary,
+                unfocusedContainerColor = Secondary,
+                disabledContainerColor = Secondary,
                 cursorColor = Color.Black,
                 focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
+                unfocusedIndicatorColor = Color.Transparent,
             ),
             shape = RoundedCornerShape(20.dp),
             value = text,
@@ -131,7 +133,7 @@ fun Home(
             contentPadding = PaddingValues(horizontal = 22.dp)
 
         ) {
-            itemsIndexed(displayHomeItems().filter { it.type == getTypeFromIndex(selectedIndex) && it.isRecommended }) { index, filter ->
+            itemsIndexed(state.attractions.filter { it.type == getTypeFromIndex(selectedIndex) && it.isRecommended }) { index, filter ->
                 ItemCard(
                     itemModel = filter,
                     openDetails = openDetails,
@@ -149,7 +151,7 @@ fun Home(
             modifier = Modifier.padding(top = 16.dp),
             contentPadding = PaddingValues(horizontal = 22.dp)
         ) {
-            itemsIndexed(displayHomeItems().filter { it.type == getTypeFromIndex(selectedIndex) && !it.isRecommended }) { index, filter ->
+            itemsIndexed(state.attractions.filter { it.type == getTypeFromIndex(selectedIndex) && !it.isRecommended }) { index, filter ->
                 OtherChoicesItemCard(
                     homeItemModel = filter,
                     openDetails = openDetails,
@@ -160,13 +162,13 @@ fun Home(
     }
 }
 
-fun getTypeFromIndex(index: Int): SectionEnum {
+fun getTypeFromIndex(index: Int): String {
     return when (index) {
-        0 -> SectionEnum.HOTEL
-        1 -> SectionEnum.RESTAURANT
-        2 -> SectionEnum.CLUB
-        3 -> SectionEnum.TOUR
-        else -> SectionEnum.HOTEL
+        0 -> "hotel"
+        1 -> "restaurant"
+        2 -> "club"
+        3 -> "tour"
+        else -> "hotel"
     }
 }
 
