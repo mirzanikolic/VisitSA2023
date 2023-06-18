@@ -1,5 +1,6 @@
 package com.example.visitsacompose.common.navigation
 
+import com.example.visitsacompose.R
 import MapScreen
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.EnterTransition
@@ -14,8 +15,13 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.visitsacompose.common.feature.home.Home
+import com.example.visitsacompose.common.feature.itemdetails.ItemDetails
 import com.example.visitsacompose.common.feature.onboarding.Onboarding
+import com.example.visitsacompose.common.feature.settings.Settings
+import com.example.visitsacompose.common.feature.tours.Tours
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 
