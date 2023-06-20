@@ -61,7 +61,7 @@ fun ItemCard(
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 Image(
-                    painterResource(id = R.drawable.ic_hotel_central),
+                    painterResource(id = returnImageDrawable(itemModel.image)),
                     null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillHeight
@@ -135,4 +135,35 @@ fun returnPricing(value: Int): String {
         5 -> "$$$$$"
         else -> "N/A"
     }
+}
+
+fun returnImageDrawable(value: String): Int {
+    return when (value) {
+        "R.drawable.ic_club_aquarius" -> R.drawable.ic_club_aquarius
+        "R.drawable.ic_club_jazbina" -> R.drawable.ic_club_jazbina
+        "R.drawable.ic_club_mladih" -> R.drawable.ic_club_mladih
+        "R.drawable.ic_club_mrque" -> R.drawable.ic_club_mrque
+        "R.drawable.ic_club_silver" -> R.drawable.ic_club_silver
+        "R.drawable.ic_club_underground" -> R.drawable.ic_club_underground
+        "R.drawable.ic_hotel_central" -> R.drawable.ic_hotel_central
+        "R.drawable.ic_hotel_europe" -> R.drawable.ic_hotel_europe
+        "R.drawable.ic_hotel_holiday" -> R.drawable.ic_hotel_holiday
+        "R.drawable.ic_hotel_malak" -> R.drawable.ic_hotel_malak
+        "R.drawable.ic_hotel_radon" -> R.drawable.ic_hotel_radon
+        "R.drawable.ic_hotel_swiss" -> R.drawable.ic_hotel_swiss
+        "R.drawable.ic_restaurant_avlija" -> R.drawable.ic_restaurant_avlija
+        "R.drawable.ic_restaurant_barsa" -> R.drawable.ic_restaurant_barsa
+        "R.drawable.ic_restaurant_cakum" -> R.drawable.ic_restaurant_cakum
+        "R.drawable.ic_restaurant_klopa" -> R.drawable.ic_restaurant_klopa
+        "R.drawable.ic_restaurant_petica" -> R.drawable.ic_restaurant_petica
+        "R.drawable.ic_restaurant_tiger" -> R.drawable.ic_restaurant_tiger
+        "R.drawable.ic_tour1" -> R.drawable.ic_tour1
+        "R.drawable.ic_tour2" -> R.drawable.ic_tour2
+        "R.drawable.ic_tour3" -> R.drawable.ic_tour3
+        "R.drawable.ic_tour4" -> R.drawable.ic_tour4
+        "R.drawable.ic_tour5" -> R.drawable.ic_tour5
+        "R.drawable.ic_tour6" -> R.drawable.ic_tour6
+        else -> R.drawable.ic_hotel_central
+    }
+
 }

@@ -68,7 +68,7 @@ fun OtherChoicesItemCard(
                     .clip(RoundedCornerShape(12.dp))
             ) {
                 Image(
-                    painterResource(id = R.drawable.ic_hotel_central),
+                    painterResource(id = returnImageDrawable(homeItemModel.image)),
                     null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillHeight

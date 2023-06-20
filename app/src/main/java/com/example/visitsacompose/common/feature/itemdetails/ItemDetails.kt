@@ -25,6 +25,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -47,6 +49,7 @@ import com.example.visitsacompose.common.model.displayHomeItems
 import com.example.visitsacompose.common.model.enum.SectionEnum
 import com.example.visitsacompose.common.util.Constants
 import com.example.visitsacompose.ui.component.PrimaryButton
+import com.example.visitsacompose.ui.component.returnImageDrawable
 import com.example.visitsacompose.ui.theme.LightGray
 import com.example.visitsacompose.ui.theme.Typography
 import com.example.visitsacompose.ui.theme.Yellow
@@ -58,7 +61,8 @@ fun ItemDetails(
     viewModel: ItemDetailsViewModel = hiltViewModel(),
     onClick: () -> Unit
 ) {
-    val itemModel = displayHomeItems().filter { it.id.toLong() == viewModel.itemId }.first()
+
+    val state by viewModel.state.collectAsState()
     val context = LocalContext.current
     val optionsScrollState = rememberScrollState()
 
@@ -81,7 +85,7 @@ fun ItemDetails(
             Row {
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = itemModel.name,
+                    text = state.attraction.name,
                     style = Typography.titleMedium,
                     modifier = Modifier.align(CenterVertically),
                     fontWeight = FontWeight.SemiBold
@@ -89,7 +93,7 @@ fun ItemDetails(
                 Spacer(modifier = Modifier.weight(1f))
             }
             Image(
-                painterResource(id = R.drawable.ic_hotel_central),
+                painterResource(id = returnImageDrawable(state.attraction.image)),
                 contentDescription = "Image",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,7 +108,7 @@ fun ItemDetails(
             ) {
                 Column() {
                     Text(
-                        text = itemModel.name,
+                        text = state.attraction.name,
                         fontSize = 24.sp,
                         style = Typography.titleMedium,
                         fontWeight = FontWeight.SemiBold
@@ -121,7 +125,7 @@ fun ItemDetails(
                         )
                         Text(
                             modifier = Modifier.padding(top = 2.dp, start = 4.dp),
-                            text = itemModel.address,
+                            text = state.attraction.address,
                             style = Typography.bodySmall,
                             color = LightGray,
                             fontSize = 12.sp
@@ -133,7 +137,7 @@ fun ItemDetails(
                             modifier = Modifier.padding(start = 8.dp)
                         )
                         Text(
-                            text = itemModel.averageRating.toString(),
+                            text = state.attraction.averageRating.toString(),
                             style = Typography.bodySmall,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -156,7 +160,7 @@ fun ItemDetails(
                 modifier = Modifier.padding(start = 22.dp)
             )
             Text(
-                text = itemModel.details ?: "",
+                text = state.attraction.details ?: "",
                 style = Typography.bodyMedium,
                 fontWeight = FontWeight.Light,
                 modifier = Modifier.padding(start = 22.dp, top = 22.dp, end = 22.dp),
@@ -167,12 +171,12 @@ fun ItemDetails(
                 modifier = Modifier.padding(top = 22.dp, start = 22.dp, bottom = 22.dp)
             ) {
                 val annotatedPriceString = buildAnnotatedString {
-                    append(itemModel.cost)
+                    append(state.attraction.cost)
                     append(" / Person")
                     addStyle(
                         style = SpanStyle(fontWeight = FontWeight.Bold),
                         start = 0,
-                        end = itemModel.cost.length
+                        end = state.attraction.cost.length
                     )
                 }
                 Text(
@@ -182,18 +186,18 @@ fun ItemDetails(
                     color = Color.Black,
                     modifier = Modifier
                         .align(CenterVertically)
-                        .alpha(if (itemModel.type == "restaurant") 0f else 1f),
+                        .alpha(if (state.attraction.type == "restaurant") 0f else 1f),
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 PrimaryButton(
                     onClick = {
                         openLink(
-                            if (itemModel.isTour) Constants.TOUR_OFFICE else itemModel.url,
+                            if (state.attraction.isTour) Constants.TOUR_OFFICE else state.attraction.url,
                             context
                         )
                     },
                     text =
-                    if (itemModel.type == "tour") "Book Now" else "Contact property",
+                    if (state.attraction.type == "tour") "Book Now" else "Contact property",
                     margin = 22.dp
                 )
             }

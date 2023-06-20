@@ -19,6 +19,7 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.visitsacompose.common.feature.home.Home
 import com.example.visitsacompose.common.feature.itemdetails.ItemDetails
+import com.example.visitsacompose.common.feature.login.Login
 import com.example.visitsacompose.common.feature.onboarding.Onboarding
 import com.example.visitsacompose.common.feature.settings.Settings
 import com.example.visitsacompose.common.feature.tours.Tours
@@ -35,6 +36,7 @@ sealed class Screen(open val route: String) {
     object MapScreen : Screen("map")
     object Tours : Screen("tours")
     object Settings : Screen("settings")
+    object Login: Screen("login")
 }
 
 sealed class BottomNavItem(
@@ -75,7 +77,7 @@ internal fun AppNavigation(
 ) {
     AnimatedNavHost(
         navController = navController,
-        startDestination = Screen.Onboarding.route,
+        startDestination = Screen.Login.route,
         enterTransition = { defaultEnterTransition(initialState, targetState) },
         exitTransition = { defaultExitTransition(initialState, targetState) },
         popEnterTransition = { defaultPopEnterTransition() },
@@ -112,6 +114,9 @@ internal fun AppNavigation(
         }
         composable(route = Screen.Settings.route) {
             Settings()
+        }
+        composable(route = Screen.Login.route) {
+            Login()
         }
     }
 }

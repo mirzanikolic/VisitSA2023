@@ -12,8 +12,6 @@ I
 gradle/libs.versions.toml,d/7/d7595319a0658be6f1ed500ad590d42e4b28bc4f
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-
-Oapp/src/main/java/com/example/visitsacompose/common/navigation/AppNavigation.kt,7/3/73f6eee81c943637efd16c7011d1cd0cb35ff77d
 l
 <app/src/main/java/com/example/visitsacompose/MainActivity.kt,e/c/ec28180c208e80ff8a0a5d7e83b7c85c9449d069
 @
@@ -40,7 +38,3 @@ w
 Gapp/src/main/java/com/example/visitsacompose/common/StateRecuderFlow.kt,f/b/fb7a984020b97fbe5cf5c3761d0c75f56cf184e8
 t
 Dapp/src/main/java/com/example/visitsacompose/common/BaseViewModel.kt,f/e/fe222eedfac4aaf49f1b0ac852d8597d3414821d
-}
-Mapp/src/main/java/com/example/visitsacompose/common/feature/home/HomeState.kt,e/7/e7396940d6079fe5799e5d17a4902e6fb549eaf0
-†
-Vapp/src/main/java/com/example/visitsacompose/common/network/retrofit/RetrofitClient.kt,3/2/329e300fd6bac17e4f745e0abc34dc26e6e2fc2f
