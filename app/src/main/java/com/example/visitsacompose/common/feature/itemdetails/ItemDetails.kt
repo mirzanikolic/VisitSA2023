@@ -47,12 +47,15 @@ import com.example.visitsacompose.ui.theme.Yellow
 @Composable
 fun ItemDetails(
     viewModel: ItemDetailsViewModel = hiltViewModel(),
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onReview: (itemId: Int) -> Unit
 ) {
 
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
     val optionsScrollState = rememberScrollState()
+    val itemId = state.attraction.id
+
     if (!state.isLoading) {
         Box(
             modifier = Modifier
@@ -125,7 +128,7 @@ fun ItemDetails(
                                 modifier = Modifier.padding(start = 8.dp)
                             )
                             Text(
-                                text = state.attraction.averageRating.toString(),
+                                text = if (state.attraction.averageRating != null) state.attraction.averageRating.toString() else "",
                                 style = Typography.bodySmall,
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.SemiBold,
@@ -137,7 +140,10 @@ fun ItemDetails(
                     Spacer(modifier = Modifier.weight(1f))
                     Image(
                         painterResource(id = R.drawable.ic_love),
-                        contentDescription = "Love"
+                        contentDescription = "Love",
+                        modifier = Modifier.clickable {
+                            onReview(state.attraction.id)
+                        }
                     )
                 }
                 Text(

@@ -24,6 +24,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.visitsacompose.ui.theme.CustomGray
@@ -35,7 +36,7 @@ import com.example.visitsacompose.common.feature.register.RegisterViewModel
 
 @Composable
 fun Register(
-    onRegisterClicked: (username: String, email: String, password: String) -> Unit,
+    onRegisterClicked: () -> Unit,
     viewModel: RegisterViewModel = hiltViewModel()
 ) {
     var username by remember { mutableStateOf("") }
@@ -46,6 +47,10 @@ fun Register(
 
     if (state.error != null) {
         Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+    }
+
+    if (state.status != null) {
+        onRegisterClicked()
     }
 
     Column() {
@@ -154,6 +159,7 @@ fun Register(
                                 .padding(start = 6.dp)
                         )
                     },
+                    visualTransformation = PasswordVisualTransformation()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(

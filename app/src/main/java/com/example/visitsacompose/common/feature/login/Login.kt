@@ -1,9 +1,7 @@
 package com.example.visitsacompose.common.feature.login
 
-import android.content.Context
-import android.media.tv.TvContract.Channels.Logo
 import android.widget.Toast
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -20,9 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -35,6 +31,8 @@ import com.example.visitsacompose.ui.theme.Typography
 @Composable
 fun Login(
     onLoginClicked: () -> Unit,
+    onContinueAsGuest: () -> Unit,
+    onSignup: () -> Unit,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
     var email by remember { mutableStateOf("") }
@@ -157,6 +155,36 @@ fun Login(
                         fontWeight = FontWeight.SemiBold,
                         color = Color.White
                     )
+                }
+                Row(
+                    modifier = Modifier.padding(top = 4.dp)
+                ) {
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = "Have an account? Sign Up",
+                        style = Typography.titleMedium,
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .clickable { onSignup() },
+                        fontWeight = FontWeight.Normal,
+                        color = Primary
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                }
+                Row(
+                    modifier = Modifier.padding(top = 8.dp)
+                ) {
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = "Continue as Guest",
+                        style = Typography.titleMedium,
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .clickable { onContinueAsGuest() },
+                        fontWeight = FontWeight.Normal,
+                        color = Primary,
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
                 }
             }
         }

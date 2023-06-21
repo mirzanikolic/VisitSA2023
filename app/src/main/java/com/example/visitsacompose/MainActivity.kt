@@ -1,21 +1,17 @@
 package com.example.visitsacompose
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.preference.PreferenceManager
 import com.example.visitsacompose.common.navigation.AppNavigation
 import com.example.visitsacompose.common.navigation.Screen
 import com.example.visitsacompose.ui.component.BottomNavigationBar
@@ -27,10 +23,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.applicationContext)
         setContent {
             VisitSAComposeTheme {
-                VisitSaApp()
-
+                VisitSaApp(sharedPreferences = sharedPrefs)
             }
         }
     }
@@ -40,7 +36,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun VisitSaApp(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberAnimatedNavController()
+    navController: NavHostController = rememberAnimatedNavController(),
+    sharedPreferences: SharedPreferences
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
@@ -51,6 +48,6 @@ fun VisitSaApp(
             }
         }
     ) { innerPadding ->
-        AppNavigation(navController, modifier.padding(innerPadding))
+        AppNavigation(navController, modifier.padding(innerPadding), sharedPreferences)
     }
 }

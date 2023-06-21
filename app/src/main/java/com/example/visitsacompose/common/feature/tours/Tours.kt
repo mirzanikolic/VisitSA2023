@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.visitsacompose.R
 import com.example.visitsacompose.common.model.displayTourSections
+import com.example.visitsacompose.common.util.isTourAllowed
 import com.example.visitsacompose.ui.component.FilterButton
 import com.example.visitsacompose.ui.component.ItemCard
 import com.example.visitsacompose.ui.theme.Typography
@@ -82,9 +83,8 @@ fun Tours(
             ),
             content = {
                 itemsIndexed(if (selectedIndex == 0) tours else tours.filter {
-                    it.isRecommended == filterTours(
-                        selectedIndex
-                    )
+                    it.isRecommended ==
+                        selectedIndex.isTourAllowed()
                 }) { index, item ->
                     ItemCard(itemModel = item, onClick = { /*TODO*/ }, openDetails = openDetails)
                 }

@@ -1,9 +1,12 @@
 package com.example.visitsacompose.common.feature.settings
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -21,7 +24,9 @@ import com.example.visitsacompose.R
 import com.example.visitsacompose.ui.theme.Typography
 
 @Composable
-fun Settings() {
+fun Settings(
+    onLogout: () -> Unit
+) {
     var switchOn by remember { mutableStateOf(false) }
 
     Column(
@@ -117,6 +122,28 @@ fun Settings() {
                 onCheckedChange = { switchOn_ ->
                     switchOn = switchOn_
                 }
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(top = 32.dp)
+                .clickable {
+                    onLogout()
+                }
+        ) {
+            Icon(
+                imageVector = Icons.Default.Face,
+                null
+            )
+            Text(
+                "Logout",
+                style = Typography.bodyLarge,
+                modifier = Modifier.padding(start = 12.dp)
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Icon(
+                painterResource(R.drawable.ic_next),
+                null
             )
         }
     }

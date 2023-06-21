@@ -2,6 +2,7 @@ package com.example.visitsacompose.common.navigation
 
 import com.example.visitsacompose.R
 import MapScreen
+import android.content.SharedPreferences
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -17,11 +18,13 @@ import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
+import androidx.navigation.navigation
 import com.example.visitsacompose.common.feature.home.Home
 import com.example.visitsacompose.common.feature.itemdetails.ItemDetails
 import com.example.visitsacompose.common.feature.login.Login
 import com.example.visitsacompose.common.feature.login.Register
 import com.example.visitsacompose.common.feature.onboarding.Onboarding
+import com.example.visitsacompose.common.feature.review.Review
 import com.example.visitsacompose.common.feature.settings.Settings
 import com.example.visitsacompose.common.feature.tours.Tours
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -37,8 +40,9 @@ sealed class Screen(open val route: String) {
     object MapScreen : Screen("map")
     object Tours : Screen("tours")
     object Settings : Screen("settings")
-    object Login: Screen("login")
-    object Register: Screen("register")
+    object Login : Screen("login")
+    object Register : Screen("register")
+    object Review : Screen("review")
 }
 
 sealed class BottomNavItem(
@@ -76,7 +80,9 @@ sealed class BottomNavItem(
 internal fun AppNavigation(
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    sharedPreferences: SharedPreferences
 ) {
+    val token = sharedPreferences.getString("token", "") ?: ""
     AnimatedNavHost(
         navController = navController,
         startDestination = Screen.Login.route,
@@ -104,7 +110,10 @@ internal fun AppNavigation(
         ) {
             ItemDetails(onClick = {
                 navController.navigateUp()
-            })
+            },
+                onReview = { itemId ->
+                    navController.navigate(Screen.Review.route)
+                })
         }
         composable(route = Screen.MapScreen.route) {
             MapScreen()
@@ -115,15 +124,32 @@ internal fun AppNavigation(
             })
         }
         composable(route = Screen.Settings.route) {
-            Settings()
+            Settings(
+                onLogout = {
+                    navController.navigate(Screen.Login.route)
+                }
+            )
         }
         composable(route = Screen.Login.route) {
-            Login(onLoginClicked = {
-                navController.navigate(Screen.Onboarding.route)
-            })
+            Login(
+                onLoginClicked = {
+                    navController.navigate(Screen.Onboarding.route)
+                },
+                onSignup = {
+                    navController.navigate(Screen.Register.route)
+                },
+                onContinueAsGuest = {
+                    navController.navigate(Screen.Onboarding.route)
+                })
         }
         composable(route = Screen.Register.route) {
-            Register(onRegisterClicked = { one, two, three ->
+            Register(
+                onRegisterClicked = { ->
+                    navController.navigate(Screen.Login.route)
+                })
+        }
+        composable(route = Screen.Review.route) {
+            Review(onRatingSelected = {
                 navController.navigateUp()
             })
         }

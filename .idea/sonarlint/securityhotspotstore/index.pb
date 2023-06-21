@@ -9,8 +9,6 @@ I
 gradle/libs.versions.toml,d/7/d7595319a0658be6f1ed500ad590d42e4b28bc4f
 >
 app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-D
-app/build.gradle.kts,d/2/d2a4383452aad84a18429a5844d31330a012a9e6
 „
 Tapp/src/main/java/com/example/visitsacompose/common/network/common/DataRepository.kt,d/5/d583c51314d1ede3dec8eccc36c03dae1cb0b1bd
 ~
@@ -27,8 +25,6 @@ Tapp/src/main/java/com/example/visitsacompose/common/network/serializer/Serializ
 Xapp/src/main/java/com/example/visitsacompose/common/network/serializer/SerializerImpl.kt,5/e/5e7e7ff64837c109df1155fb42e657b1a0b5d7dc
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-{
-Kapp/src/main/java/com/example/visitsacompose/common/di/ApplicationModule.kt,1/a/1a989997ca269eccc086964a870645ba3e065fe2
 ‰
 Yapp/src/main/java/com/example/visitsacompose/common/model/response/AttractionsResponse.kt,1/4/1431b3cea39d6fa17938beb5ae69f04bea5a929d
 Š

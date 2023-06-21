@@ -112,7 +112,7 @@ fun ItemCard(
                             tint = Yellow
                         )
                         Text(
-                            text = itemModel.averageRating.toString(),
+                            text = if (itemModel.averageRating != null) itemModel.averageRating.toString() else "",
                             style = Typography.bodySmall,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.SemiBold,
