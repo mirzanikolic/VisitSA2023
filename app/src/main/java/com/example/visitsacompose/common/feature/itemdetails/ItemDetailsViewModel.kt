@@ -55,5 +55,4 @@ class ItemDetailsViewModel @Inject constructor(
             { ItemDetailsEvent.Error(it) }
         )
     }
-
 }

@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,21 +22,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.visitsacompose.R
-import com.example.visitsacompose.common.model.displayHomeItems
 import com.example.visitsacompose.common.model.displayTourSections
-import com.example.visitsacompose.common.model.enum.SectionEnum
-import com.example.visitsacompose.common.model.enum.TourType
 import com.example.visitsacompose.ui.component.FilterButton
 import com.example.visitsacompose.ui.component.ItemCard
 import com.example.visitsacompose.ui.theme.Typography
 
 @Composable
 fun Tours(
-    openDetails: (Int) -> Unit
+    openDetails: (Int) -> Unit,
+    toursViewModel: ToursViewModel = hiltViewModel()
 ) {
     var selectedIndex by remember { mutableStateOf(0) }
-    val tours = remember { displayHomeItems().filter { it.isTour } }
+    val state by toursViewModel.state.collectAsState()
+    val tours = state.attractions.filter { it.type == "tour" }
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -81,7 +82,7 @@ fun Tours(
             ),
             content = {
                 itemsIndexed(if (selectedIndex == 0) tours else tours.filter {
-                    it.tourType == filterTours(
+                    it.isRecommended == filterTours(
                         selectedIndex
                     )
                 }) { index, item ->
@@ -92,10 +93,10 @@ fun Tours(
     }
 }
 
-fun filterTours(index: Int): TourType {
+fun filterTours(index: Int): Boolean {
     return when (index) {
-        1 -> TourType.POPULAR
-        2 -> TourType.RECOMMENDED
-        else -> TourType.ALL
+        1 -> true
+        2 -> false
+        else -> true
     }
 }

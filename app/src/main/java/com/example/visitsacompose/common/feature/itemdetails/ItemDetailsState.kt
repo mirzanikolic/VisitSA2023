@@ -3,7 +3,7 @@ package com.example.visitsacompose.common.feature.itemdetails
 import com.example.visitsacompose.common.model.HomeItemModel
 
 data class ItemDetailsState(
-    val isLoading: Boolean,
+    val isLoading: Boolean = true,
     val error: Throwable? = null,
     val attraction: HomeItemModel
 ) {

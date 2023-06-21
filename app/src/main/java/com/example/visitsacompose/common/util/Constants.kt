@@ -5,6 +5,6 @@ object Constants {
     const val TOUR_OFFICE = "https://www.tripadvisor.com/Attraction_Products-g294450-a_contentId.45841830891+761209672-Sarajevo_Sarajevo_Canton_Federation_of_Bosnia_and_Herzegovina.html"
 
     object API {
-        const val API_URL = "http://192.168.0.18:4001"
+        const val API_URL = "https://visit-sa-api.onrender.com"
     }
 }

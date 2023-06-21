@@ -163,7 +163,7 @@ fun returnImageDrawable(value: String): Int {
         "R.drawable.ic_tour4" -> R.drawable.ic_tour4
         "R.drawable.ic_tour5" -> R.drawable.ic_tour5
         "R.drawable.ic_tour6" -> R.drawable.ic_tour6
-        else -> R.drawable.ic_hotel_central
+        else -> R.drawable.ic_hotel_swiss
     }
 
 }
