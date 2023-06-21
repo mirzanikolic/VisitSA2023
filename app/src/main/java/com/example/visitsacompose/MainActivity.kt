@@ -46,7 +46,7 @@ fun VisitSaApp(
 
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.Onboarding.route) {
+            if (currentRoute != Screen.Onboarding.route && currentRoute != Screen.Login.route && currentRoute != Screen.Register.route) {
                 BottomNavigationBar(navController)
             }
         }

@@ -20,6 +20,7 @@ import androidx.navigation.navArgument
 import com.example.visitsacompose.common.feature.home.Home
 import com.example.visitsacompose.common.feature.itemdetails.ItemDetails
 import com.example.visitsacompose.common.feature.login.Login
+import com.example.visitsacompose.common.feature.login.Register
 import com.example.visitsacompose.common.feature.onboarding.Onboarding
 import com.example.visitsacompose.common.feature.settings.Settings
 import com.example.visitsacompose.common.feature.tours.Tours
@@ -37,6 +38,7 @@ sealed class Screen(open val route: String) {
     object Tours : Screen("tours")
     object Settings : Screen("settings")
     object Login: Screen("login")
+    object Register: Screen("register")
 }
 
 sealed class BottomNavItem(
@@ -116,7 +118,12 @@ internal fun AppNavigation(
             Settings()
         }
         composable(route = Screen.Login.route) {
-            Login(onLoginClicked = { one, two ->
+            Login(onLoginClicked = {
+                navController.navigate(Screen.Onboarding.route)
+            })
+        }
+        composable(route = Screen.Register.route) {
+            Register(onRegisterClicked = { one, two, three ->
                 navController.navigateUp()
             })
         }

@@ -24,31 +24,28 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.visitsacompose.ui.theme.CustomGray
 import com.example.visitsacompose.ui.theme.Primary
 import com.example.visitsacompose.ui.theme.Secondary
 import com.example.visitsacompose.ui.theme.Typography
+import com.example.visitsacompose.common.feature.register.RegisterEvent
+import com.example.visitsacompose.common.feature.register.RegisterViewModel
 
 @Composable
-fun Login(
-    onLoginClicked: () -> Unit,
-    viewModel: LoginViewModel = hiltViewModel()
+fun Register(
+    onRegisterClicked: (username: String, email: String, password: String) -> Unit,
+    viewModel: RegisterViewModel = hiltViewModel()
 ) {
+    var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
 
     if (state.error != null) {
-        Toast.makeText(context, "Wrong credentials", Toast.LENGTH_SHORT).show()
-        viewModel.state.handleEvent(LoginEvent.Error(null))
-    }
-
-    if (state.token != null) {
-        onLoginClicked()
+        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
     }
 
     Column() {
@@ -57,7 +54,7 @@ fun Login(
         ) {
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = "Sign In",
+                text = "Sign Up",
                 style = Typography.titleMedium,
                 modifier = Modifier.align(Alignment.CenterVertically),
                 fontWeight = FontWeight.SemiBold
@@ -73,6 +70,33 @@ fun Login(
                 modifier = Modifier.align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                TextField(
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = Secondary,
+                        unfocusedContainerColor = Secondary,
+                        disabledContainerColor = Secondary,
+                        cursorColor = Color.Black,
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                    ),
+                    shape = RoundedCornerShape(20.dp),
+                    value = username,
+                    onValueChange = { newText ->
+                        username = newText
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 22.dp),
+                    placeholder = {
+                        Text(
+                            text = "Enter username",
+                            color = CustomGray,
+                            style = Typography.bodyMedium,
+                            modifier = Modifier
+                                .padding(start = 6.dp)
+                        )
+                    },
+                )
                 Spacer(modifier = Modifier.height(16.dp))
                 TextField(
                     colors = TextFieldDefaults.colors(
@@ -130,13 +154,13 @@ fun Login(
                                 .padding(start = 6.dp)
                         )
                     },
-                    visualTransformation = PasswordVisualTransformation()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = {
                         viewModel.state.handleEvent(
-                            LoginEvent.LoginUser(
+                            RegisterEvent.RegisterUser(
+                                username,
                                 email,
                                 password
                             )
