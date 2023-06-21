@@ -1,6 +1,7 @@
 package com.example.visitsacompose.common.network.retrofit
 
 import com.example.visitsacompose.common.network.api.AttractionsAPI
+import com.example.visitsacompose.common.network.api.AuthAPI
 import com.example.visitsacompose.common.network.http.HttpClient
 import com.example.visitsacompose.common.network.serializer.Serializer
 import com.example.visitsacompose.common.util.Constants
@@ -20,5 +21,14 @@ class RetrofitClientImpl @Inject constructor(
             .client(httpClient.getClient())
             .build()
             .create(AttractionsAPI::class.java)
+    }
+
+    override fun getAuthAPI(): AuthAPI {
+        return Retrofit.Builder()
+            .baseUrl(Constants.API.API_URL)
+            .addConverterFactory(MoshiConverterFactory.create(serializer.getMoshi()))
+            .client(httpClient.getClient())
+            .build()
+            .create(AuthAPI::class.java)
     }
 }

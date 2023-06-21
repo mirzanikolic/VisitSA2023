@@ -116,7 +116,9 @@ internal fun AppNavigation(
             Settings()
         }
         composable(route = Screen.Login.route) {
-            Login()
+            Login(onLoginClicked = { one, two ->
+                navController.navigateUp()
+            })
         }
     }
 }
