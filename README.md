@@ -9,4 +9,5 @@ Screens added:
 
 ## Version 2.0.0
 This version introduces the release candidate build.
-Description available in se_project_template.pdf
+
+- Description available in se_project_template.pdf
